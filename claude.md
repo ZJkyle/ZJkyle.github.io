@@ -5,11 +5,21 @@
 ---
 
 ## 當前進度
-- 我想要用github pages + hexo 寫一個個人網站
+- 使用 GitHub Pages + Hexo 建立個人網站
 
 ### 待完成任務
+- [ ] 設置 Hexo 專案結構
+- [ ] 建立 Projects 頁面 - 展示個人專案作品
+- [ ] 建立 Ideas 頁面 - 記錄想法與筆記
+
+### 待研究：EdgeSwarm Inference System
+- [ ] 研究 vLLM / Ollama 透過 model preloading 消除 cold-start latency 的機制
+- [ ] 探討同時 preload 多個小模型的可行性
+- [ ] 設計：簡單任務用單一模型，複雜任務用多模型協作的調度策略
+- [ ] 比較不同 inference framework 的優缺點（vLLM vs Ollama vs others）
 
 ### 已完成
+- [x] 初步建立 index.html 靜態頁面
 ---
 
 ## 標準開發流程（Standard Development Workflow）
