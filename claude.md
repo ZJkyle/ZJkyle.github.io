@@ -8,9 +8,9 @@
 - 使用 GitHub Pages + Hexo 建立個人網站
 
 ### 待完成任務
-- [ ] 設置 Hexo 專案結構
-- [ ] 建立 Projects 頁面 - 展示個人專案作品
-- [ ] 建立 Ideas 頁面 - 記錄想法與筆記
+- [ ] 充實 Projects 頁面內容 - 加入實際專案作品
+- [ ] 充實 Ideas 頁面內容 - 加入想法與筆記
+- [ ] 選擇並設定 Hexo 主題（目前使用預設 landscape）
 
 ### 待研究：EdgeSwarm Inference System
 - [ ] 研究 vLLM / Ollama 透過 model preloading 消除 cold-start latency 的機制
@@ -20,6 +20,11 @@
 
 ### 已完成
 - [x] 初步建立 index.html 靜態頁面
+- [x] 設置 Hexo 專案結構（_config.yml, source/, themes/）
+- [x] 建立 Projects 頁面框架（source/projects/index.md）
+- [x] 建立 Ideas 頁面框架（source/ideas/index.md）
+- [x] 建立 About 頁面（source/about/index.md）
+- [x] 設定 GitHub Actions 自動部署（.github/workflows/deploy.yml）
 ---
 
 ## 標準開發流程（Standard Development Workflow）

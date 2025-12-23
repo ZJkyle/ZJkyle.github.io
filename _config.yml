@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Kyle Ko
+title: Kyle
 subtitle: 'Building AI that works where it matters'
 description: 'I build AI systems that bridge the gap between cutting-edge research and real-world impact. Currently exploring how multiple AI agents can reason together under constraints.'
 keywords:
@@ -96,7 +96,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

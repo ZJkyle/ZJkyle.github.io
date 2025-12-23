@@ -1,0 +1,66 @@
+#---------------------------
+# Hexo Theme Fluid - Custom Config
+#---------------------------
+
+# 導航欄標題
+navbar:
+  blog_title: "Kyle"
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "Projects", link: "/projects/", icon: "iconfont icon-code" }
+    - { key: "Ideas", link: "/ideas/", icon: "iconfont icon-bulb" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+
+# 首頁設定
+index:
+  banner_img: https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920
+  banner_img_height: 80
+  banner_mask_alpha: 0.4
+  slogan:
+    enable: true
+    text: "Building AI that works where it matters"
+
+# 文章頁設定
+post:
+  banner_img: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920
+  banner_img_height: 60
+  banner_mask_alpha: 0.4
+
+# About 頁面設定
+about:
+  banner_img: https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920
+  banner_img_height: 60
+  banner_mask_alpha: 0.4
+
+# 自訂頁面設定
+page:
+  banner_img: https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920
+  banner_img_height: 60
+  banner_mask_alpha: 0.4
+
+# 頁尾設定
+footer:
+  content: '
+    <span>Kyle</span>
+    <span style="margin: 0 8px;">|</span>
+    <a href="https://github.com/ZJkyle" target="_blank" rel="nofollow noopener">GitHub</a>
+  '
+
+# 深色模式
+dark_mode:
+  enable: true
+  default: auto
+
+# 顏色配置 - 科技感深藍色調
+color:
+  navbar_bg_color: "#1a1a2e"
+  navbar_bg_color_dark: "#0f0f1a"
+  body_bg_color: "#f5f7fa"
+  body_bg_color_dark: "#16213e"
+  board_color: "#ffffff"
+  board_color_dark: "#1a1a2e"
+  post_link_color: "#4f46e5"
+  post_link_color_dark: "#818cf8"
+  link_hover_color: "#6366f1"
+  link_hover_color_dark: "#a5b4fc"
