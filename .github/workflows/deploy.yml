@@ -20,6 +20,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Debug - List themes
+        run: |
+          echo "=== Themes directory ==="
+          ls -la themes/
+          echo "=== Fluid theme ==="
+          ls -la themes/fluid/ || echo "Fluid theme not found"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
