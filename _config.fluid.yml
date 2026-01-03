@@ -52,15 +52,54 @@ dark_mode:
   enable: true
   default: auto
 
-# 顏色配置 - 科技感深藍色調
+# 顏色配置 - 柔和現代風格
 color:
-  navbar_bg_color: "#1a1a2e"
-  navbar_bg_color_dark: "#0f0f1a"
-  body_bg_color: "#f5f7fa"
-  body_bg_color_dark: "#16213e"
+  # Navbar
+  navbar_bg_color: "#5c6370"
+  navbar_bg_color_dark: "#1a1d23"
+  # Body
+  body_bg_color: "#faf9f7"
+  body_bg_color_dark: "#1a1d23"
+  # Board/Cards
   board_color: "#ffffff"
-  board_color_dark: "#1a1a2e"
-  post_link_color: "#4f46e5"
-  post_link_color_dark: "#818cf8"
-  link_hover_color: "#6366f1"
-  link_hover_color_dark: "#a5b4fc"
+  board_color_dark: "#252830"
+  # Text
+  text_color: "#2d3436"
+  text_color_dark: "#e4e6eb"
+  sec_text_color: "#636e72"
+  sec_text_color_dark: "#a0a4a8"
+  post_text_color: "#2d3436"
+  post_text_color_dark: "#e4e6eb"
+  post_heading_color: "#1a1d23"
+  post_heading_color_dark: "#f4f5f6"
+  # Links
+  post_link_color: "#e07a5f"
+  post_link_color_dark: "#f2a999"
+  link_hover_color: "#81b29a"
+  link_hover_color_dark: "#a8d5c2"
+  link_hover_bg_color: "#f0f2f0"
+  link_hover_bg_color_dark: "#2f333d"
+  # Lines
+  line_color: "#e8e6e3"
+  line_color_dark: "#3a3f4a"
+  # Scrollbar
+  scrollbar_color: "#d1ccc5"
+  scrollbar_color_dark: "#4a4f5a"
+  scrollbar_hover_color: "#b8b2a8"
+  scrollbar_hover_color_dark: "#5a6070"
+  # Buttons
+  button_bg_color: "#f5f3f0"
+  button_bg_color_dark: "#2a2f38"
+  button_hover_bg_color: "#ebe8e4"
+  button_hover_bg_color_dark: "#363c48"
+
+# 字體設定
+font:
+  font_size: "17px"
+  font_family: "'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif"
+  letter_spacing: "0.01em"
+  code_font_size: "90%"
+
+# 自訂樣式
+custom_css:
+  - /css/custom.css
