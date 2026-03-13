@@ -2,7 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import HighlightCard from '../components/HighlightCard.astro';
+import BlogPostCard from '../components/BlogPostCard.astro';
 import { products } from '../data/products';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Kyle Ko - AI 開發者 / 產品工程師">
@@ -10,7 +16,7 @@ import { products } from '../data/products';
 
   <section class="bg-slate-50 py-20">
     <div class="mx-auto max-w-5xl px-6">
-      <h2 class="text-center text-2xl font-bold text-slate-900">Featured Products</h2>
+      <h2 class="text-center text-2xl font-bold text-slate-900">精選作品</h2>
       <p class="mx-auto mt-3 max-w-xl text-center text-sm text-slate-600">
         實際運行的產品，涵蓋 AI 應用、全端開發與自動化系統。
       </p>
@@ -27,6 +33,27 @@ import { products } from '../data/products';
   </section>
 
   <section class="py-20">
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="text-center text-2xl font-bold text-slate-900">最新文章</h2>
+      <div class="mt-10 space-y-6">
+        {posts.map((post) => (
+          <BlogPostCard
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            slug={post.id}
+          />
+        ))}
+      </div>
+      <div class="mt-8 text-center">
+        <a href="/blog/" class="text-sm font-medium text-blue-600 hover:underline">
+          查看所有文章 &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
     <div class="mx-auto max-w-3xl px-6 text-center">
       <h2 class="text-2xl font-bold text-slate-900">關於我</h2>
       <p class="mt-4 text-sm leading-relaxed text-slate-600">

@@ -14,7 +14,10 @@ const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month:
 <BaseLayout title={`${title} - Kyle Ko`}>
   <article class="mx-auto max-w-3xl px-6 py-16">
     <header class="mb-10">
-      <time class="text-sm text-slate-400">{formattedDate}</time>
+      <a href="/blog/" class="inline-block text-sm text-slate-400 transition-colors hover:text-blue-600">
+        &larr; 返回文章列表
+      </a>
+      <time class="mt-4 block text-sm text-slate-400">{formattedDate}</time>
       <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{title}</h1>
       {tags.length > 0 && (
         <div class="mt-4 flex flex-wrap gap-2">
@@ -24,8 +27,13 @@ const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month:
         </div>
       )}
     </header>
-    <div class="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+    <div class="prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-code:before:content-none prose-code:after:content-none">
       <slot />
     </div>
+    <footer class="mt-16 border-t border-slate-200 pt-8">
+      <a href="/blog/" class="text-sm font-medium text-blue-600 hover:underline">
+        &larr; 返回文章列表
+      </a>
+    </footer>
   </article>
 </BaseLayout>

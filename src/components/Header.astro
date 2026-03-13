@@ -2,18 +2,20 @@
 const pathname = Astro.url.pathname;
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/products/', label: 'Products' },
-  { href: '/services/', label: 'Services' },
+  { href: '/', label: '首頁' },
+  { href: '/products/', label: '作品集' },
+  { href: '/services/', label: '服務' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/about/', label: 'About' },
+  { href: '/about/', label: '關於' },
 ];
 ---
 
 <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md">
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
     <a href="/" class="text-xl font-bold text-slate-900">Kyle Ko</a>
-    <ul class="flex items-center gap-8">
+
+    <!-- Desktop nav -->
+    <ul class="hidden items-center gap-8 md:flex">
       {navItems.map(({ href, label }) => (
         <li>
           <a
@@ -28,5 +30,53 @@ const navItems = [
         </li>
       ))}
     </ul>
+
+    <!-- Mobile hamburger button -->
+    <button
+      id="menu-toggle"
+      class="flex h-10 w-10 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 md:hidden"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <svg id="icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+    <ul class="mx-auto max-w-5xl space-y-1 px-6 py-4">
+      {navItems.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'block rounded-lg px-4 py-2.5 text-sm font-medium transition-colors',
+              pathname === href ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50',
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen?.classList.toggle('hidden', isOpen);
+    iconClose?.classList.toggle('hidden', !isOpen);
+  });
+</script>
