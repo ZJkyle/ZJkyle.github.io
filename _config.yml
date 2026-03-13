@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Kyle
-subtitle: 'Building AI that works where it matters'
-description: 'I build AI systems that bridge the gap between cutting-edge research and real-world impact. Currently exploring how multiple AI agents can reason together under constraints.'
-keywords:
-author: Kyle
+title: Kyle Ko
+subtitle: 'AI 開發者 / 產品工程師'
+description: '專注於 AI 應用開發與系統整合，擅長將 LLM、Multi-Agent 等技術落地為實際產品。提供客製化 AI 解決方案、全端開發與技術顧問服務。'
+keywords: AI開發, LLM, Multi-Agent, 全端開發, 技術顧問, 台灣
+author: Kyle Ko
 language: zh-TW
 timezone: 'Asia/Taipei'
 

@@ -2,7 +2,7 @@
 title: Claude Code 工作流程自動化筆記
 date: 2025-12-31
 tags: [claude-code, automation, workflow, productivity]
-categories: [AI Tools]
+categories: [技術筆記]
 ---
 
 這是我學習 Claude Code 自動化功能的筆記。主要解決兩個痛點：每次對話都要重複解釋專案背景、以及手動執行重複性任務。
