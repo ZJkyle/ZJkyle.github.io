@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TechTag from '../components/TechTag.astro';
+---
+
+<BaseLayout title="關於我 - Kyle Ko">
+  <section class="py-20">
+    <div class="mx-auto max-w-3xl px-6">
+      <h1 class="text-3xl font-bold tracking-tight text-slate-900">Kyle Ko</h1>
+      <p class="mt-1 text-lg text-blue-600">AI 開發者 / 產品工程師</p>
+
+      <div class="mt-8 space-y-4 text-sm leading-relaxed text-slate-600">
+        <p>
+          我是一名專注於 AI 應用落地的全端開發者，目前在 myPDA 擔任 AI Developer，同時就讀國立交通大學碩士班。
+        </p>
+        <p>
+          我的核心能力是將 LLM、Multi-Agent、Embedding 等 AI 技術整合進實際產品中，解決企業真實的業務問題。
+        </p>
+      </div>
+
+      <hr class="my-10 border-slate-200" />
+
+      <h2 class="text-xl font-bold text-slate-900">專業技能</h2>
+
+      <div class="mt-6 space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">AI / LLM</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {['LLM 應用開發 (vLLM, Ollama)', 'Multi-Agent 系統', 'RAG Pipeline', 'Embedding / Vector Search', 'Whisper STT', 'Speaker Diarization'].map(s => <TechTag label={s} />)}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">全端開發</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {['Next.js', 'SvelteKit', 'React', 'Tailwind CSS', 'FastAPI', 'Hono', 'Node.js', 'PostgreSQL', 'pgvector', 'Prisma', 'SQLAlchemy', 'Docker', 'GitHub Actions'].map(s => <TechTag label={s} />)}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">系統整合</h3>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {['Discord Bot', 'Telegram Bot', 'RESTful API', 'OpenAPI', 'Microservice'].map(s => <TechTag label={s} />)}
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-10 border-slate-200" />
+
+      <h2 class="text-xl font-bold text-slate-900">經歷</h2>
+      <ul class="mt-6 space-y-4">
+        <li>
+          <p class="font-semibold text-slate-900">AI Developer <span class="font-normal text-slate-400">@ myPDA</span></p>
+          <p class="mt-1 text-sm text-slate-600">負責 AI 產品開發與 LLM 整合</p>
+        </li>
+        <li>
+          <p class="font-semibold text-slate-900">碩士研究生 <span class="font-normal text-slate-400">@ 國立交通大學</span></p>
+          <p class="mt-1 text-sm text-slate-600">研究方向為 Multi-Agent 推論系統</p>
+        </li>
+      </ul>
+
+      <hr class="my-10 border-slate-200" />
+
+      <h2 class="text-xl font-bold text-slate-900">聯絡方式</h2>
+      <p class="mt-3 text-sm text-slate-600">有專案合作需求或技術諮詢，歡迎透過以下方式聯繫：</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><span class="text-slate-400">Email:</span> <a href="mailto:zhijiakyle@gmail.com" class="text-blue-600 hover:underline">zhijiakyle@gmail.com</a></li>
+        <li><span class="text-slate-400">GitHub:</span> <a href="https://github.com/ZJkyle" class="text-blue-600 hover:underline" target="_blank" rel="noopener">ZJkyle</a></li>
+        <li><span class="text-slate-400">LinkedIn:</span> <a href="https://www.linkedin.com/in/%E6%99%BA%E5%98%89-%E6%9F%AF-256a212a0/" class="text-blue-600 hover:underline" target="_blank" rel="noopener">Kyle Ko</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

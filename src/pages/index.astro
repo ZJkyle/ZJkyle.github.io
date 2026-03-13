@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import HighlightCard from '../components/HighlightCard.astro';
+import { products } from '../data/products';
+---
+
+<BaseLayout title="Kyle Ko - AI 開發者 / 產品工程師">
+  <Hero />
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="text-center text-2xl font-bold text-slate-900">Featured Products</h2>
+      <p class="mx-auto mt-3 max-w-xl text-center text-sm text-slate-600">
+        實際運行的產品，涵蓋 AI 應用、全端開發與自動化系統。
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-3">
+        {products.map((p) => (
+          <HighlightCard
+            name={p.name}
+            description={p.tagline}
+            href="/products/"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <h2 class="text-2xl font-bold text-slate-900">關於我</h2>
+      <p class="mt-4 text-sm leading-relaxed text-slate-600">
+        我是一名專注於 AI 應用落地的全端開發者，目前在 myPDA 擔任 AI Developer，同時就讀國立交通大學碩士班。
+        我的核心能力是將 LLM、Multi-Agent、Embedding 等 AI 技術整合進實際產品中，解決企業真實的業務問題。
+      </p>
+      <a href="/about/" class="mt-6 inline-block text-sm font-medium text-blue-600 hover:underline">
+        了解更多 &rarr;
+      </a>
+    </div>
+  </section>
+</BaseLayout>

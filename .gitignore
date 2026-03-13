@@ -1,5 +1,4 @@
 node_modules/
-public/
-.deploy*/
-db.json
+dist/
+.astro/
 *.log
