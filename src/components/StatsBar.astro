@@ -1,9 +1,9 @@
 ---
 const stats = [
-  { value: '3+', label: '個產品已上線' },
-  { value: '2+', label: '年 AI 開發經驗' },
-  { value: '10+', label: '項技術棧掌握' },
-  { value: '24hr', label: '內回覆訊息' },
+  { value: '3', label: '款 AI 工具' },
+  { value: 'LLM + RAG', label: '核心技術' },
+  { value: '全端', label: '從模型到 UI 一條龍' },
+  { value: '開源', label: '技術公開透明' },
 ];
 ---
 
@@ -11,7 +11,7 @@ const stats = [
   <div class="mx-auto grid max-w-5xl grid-cols-2 gap-8 px-6 sm:grid-cols-4">
     {stats.map(({ value, label }) => (
       <div class="text-center">
-        <p class="text-3xl font-bold text-blue-600">{value}</p>
+        <p class="text-2xl font-bold text-blue-600 sm:text-3xl">{value}</p>
         <p class="mt-1 text-sm text-slate-500">{label}</p>
       </div>
     ))}

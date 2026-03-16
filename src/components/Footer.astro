@@ -10,10 +10,9 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: 'AI 工具開發' },
-  { label: 'Web App 開發' },
-  { label: '自動化與 Bot' },
-  { label: '技術顧問' },
+  { label: 'Glean - 資訊整理' },
+  { label: 'AutoBill - 帳單辨識' },
+  { label: 'Radar - 求職追蹤' },
 ];
 ---
 
@@ -24,8 +23,8 @@ const serviceLinks = [
       <div class="sm:col-span-2 lg:col-span-1">
         <p class="text-lg font-bold text-slate-900">Kyle Ko</p>
         <p class="mt-2 text-sm leading-relaxed text-slate-500">
-          AI 開發者 / 產品工程師<br />
-          幫你把點子變成產品。
+          用 AI 自動化重複工作，<br />
+          讓你專注在真正重要的事。
         </p>
       </div>
 
@@ -43,11 +42,11 @@ const serviceLinks = [
 
       <!-- Services -->
       <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">服務項目</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">工具</h3>
         <ul class="mt-4 space-y-2.5">
           {serviceLinks.map(({ label }) => (
             <li>
-              <a href="/services/" class="text-sm text-slate-600 transition-colors hover:text-blue-600">{label}</a>
+              <a href="/products/" class="text-sm text-slate-600 transition-colors hover:text-blue-600">{label}</a>
             </li>
           ))}
         </ul>
