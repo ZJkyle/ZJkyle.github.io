@@ -1,0 +1,84 @@
+---
+const cases = [
+  {
+    name: 'Glean',
+    category: 'AI 生產力工具',
+    summary: '團隊的想法散落在 Discord、Telegram 各處？Glean 用 AI 自動彙整、分類、追蹤，讓碎片資訊變成可行動的知識。',
+    results: [
+      '語音轉文字 + 說話者辨識，會議記錄全自動',
+      'AI 自動標籤分類，搜尋效率大幅提升',
+      '多平台整合：Discord / Telegram / Web',
+    ],
+    stack: ['Next.js', 'pgvector', 'Whisper', 'vLLM'],
+  },
+  {
+    name: 'AutoBill',
+    category: 'AI 自動化微服務',
+    summary: '手動對帳太痛苦？AutoBill 用 OCR + LLM 自動辨識帳單、擷取關鍵資訊、結構化儲存，讓帳務處理從小時變成秒。',
+    results: [
+      'OCR + LLM 雙引擎，辨識準確率高',
+      '自動擷取金額、日期、品項等關鍵欄位',
+      'RESTful API 設計，可輕鬆整合進任何系統',
+    ],
+    stack: ['FastAPI', 'vLLM', 'pgvector', 'asyncpg'],
+  },
+  {
+    name: 'Radar',
+    category: '社群求職平台',
+    summary: '求職資訊散落在 PTT、Dcard、Excel？Radar 把面試經驗分享、投遞追蹤、履歷產生整合在一個平台，讓找工作不再手忙腳亂。',
+    results: [
+      '一站管理所有投遞進度',
+      '社群共享面試問題與準備策略',
+      'PWA 支援，手機隨時查看',
+    ],
+    stack: ['SvelteKit', 'FastAPI', 'PostgreSQL', 'Docker'],
+  },
+];
+---
+
+<section class="py-20">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">實際做過的東西</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm text-slate-600">
+        不是 Demo，是真的在跑的產品。每個專案都是從一個真實的痛點出發。
+      </p>
+    </div>
+    <div class="mt-14 space-y-8">
+      {cases.map((c, i) => (
+        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:shadow-md">
+          <div class="p-8 sm:p-10">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="text-xl font-bold text-slate-900">{c.name}</h3>
+              <span class="rounded-full bg-blue-50 px-3 py-0.5 text-xs font-medium text-blue-700">{c.category}</span>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{c.summary}</p>
+            <div class="mt-6">
+              <h4 class="text-xs font-semibold uppercase tracking-wide text-slate-400">成果亮點</h4>
+              <ul class="mt-3 space-y-2">
+                {c.results.map((r) => (
+                  <li class="flex items-start gap-2 text-sm text-slate-600">
+                    <svg class="mt-0.5 h-4 w-4 shrink-0 text-green-500" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {c.stack.map((s) => (
+                <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600">{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="mt-10 text-center">
+      <a href="/products/" class="text-sm font-medium text-blue-600 hover:underline">
+        查看所有作品 &rarr;
+      </a>
+    </div>
+  </div>
+</section>

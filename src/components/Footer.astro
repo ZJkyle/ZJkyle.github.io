@@ -1,16 +1,77 @@
 ---
 const year = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/', label: '首頁' },
+  { href: '/products/', label: '作品集' },
+  { href: '/services/', label: '服務' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: '關於' },
+];
+
+const serviceLinks = [
+  { label: 'AI 工具開發' },
+  { label: 'Web App 開發' },
+  { label: '自動化與 Bot' },
+  { label: '技術顧問' },
+];
 ---
 
-<footer class="border-t border-slate-200 bg-white">
-  <div class="mx-auto max-w-5xl px-6 py-12">
-    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-      <p class="text-sm text-slate-500">&copy; {year} Kyle Ko. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="https://github.com/ZJkyle" class="text-sm text-slate-500 transition-colors hover:text-blue-600" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/%E6%99%BA%E5%98%89-%E6%9F%AF-256a212a0/" class="text-sm text-slate-500 transition-colors hover:text-blue-600" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:zhijiakyle@gmail.com" class="text-sm text-slate-500 transition-colors hover:text-blue-600">Email</a>
+<footer class="border-t border-slate-200 bg-slate-50">
+  <div class="mx-auto max-w-5xl px-6 py-16">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <p class="text-lg font-bold text-slate-900">Kyle Ko</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">
+          AI 開發者 / 產品工程師<br />
+          幫你把點子變成產品。
+        </p>
       </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">頁面導覽</h3>
+        <ul class="mt-4 space-y-2.5">
+          {navLinks.map(({ href, label }) => (
+            <li>
+              <a href={href} class="text-sm text-slate-600 transition-colors hover:text-blue-600">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">服務項目</h3>
+        <ul class="mt-4 space-y-2.5">
+          {serviceLinks.map(({ label }) => (
+            <li>
+              <a href="/services/" class="text-sm text-slate-600 transition-colors hover:text-blue-600">{label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">聯絡我</h3>
+        <ul class="mt-4 space-y-2.5">
+          <li>
+            <a href="mailto:zhijiakyle@gmail.com" class="text-sm text-slate-600 transition-colors hover:text-blue-600">zhijiakyle@gmail.com</a>
+          </li>
+          <li>
+            <a href="https://github.com/ZJkyle" class="text-sm text-slate-600 transition-colors hover:text-blue-600" target="_blank" rel="noopener">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/%E6%99%BA%E5%98%89-%E6%9F%AF-256a212a0/" class="text-sm text-slate-600 transition-colors hover:text-blue-600" target="_blank" rel="noopener">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-slate-200 pt-8 text-center">
+      <p class="text-xs text-slate-400">&copy; {year} Kyle Ko. All rights reserved.</p>
     </div>
   </div>
 </footer>

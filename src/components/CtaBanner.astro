@@ -1,0 +1,28 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '有想法想做出來？',
+  description = '不管是剛萌芽的點子還是已經規劃好的專案，都歡迎找我聊聊。第一次諮詢完全免費，沒有壓力。',
+} = Astro.props;
+---
+
+<section class="bg-slate-900 py-20">
+  <div class="mx-auto max-w-3xl px-6 text-center">
+    <h2 class="text-2xl font-bold text-white sm:text-3xl">{title}</h2>
+    <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-slate-400">
+      {description}
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a href="mailto:zhijiakyle@gmail.com" class="w-full rounded-full bg-blue-600 px-8 py-3.5 text-sm font-medium text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 sm:w-auto">
+        寄信給我
+      </a>
+      <a href="/services/" class="w-full rounded-full border border-slate-600 px-8 py-3.5 text-sm font-medium text-slate-300 transition-colors hover:border-slate-500 hover:text-white sm:w-auto">
+        先看看服務內容
+      </a>
+    </div>
+  </div>
+</section>
