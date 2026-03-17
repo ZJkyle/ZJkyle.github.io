@@ -6,77 +6,75 @@ import TechTag from '../components/TechTag.astro';
 <BaseLayout title="關於 - Manatee">
   <section class="py-20">
     <div class="mx-auto max-w-3xl px-6">
-      <h1 class="text-3xl font-bold tracking-tight text-slate-900">關於 Manatee</h1>
-      <p class="mt-1 text-lg text-blue-600">AI 工具集合站</p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600">About</p>
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">關於 Manatee</h1>
 
-      <div class="mt-8 space-y-4 text-sm leading-relaxed text-slate-600">
+      <div class="mt-8 space-y-4 text-sm leading-relaxed text-slate-500">
         <p>
           Manatee 是一個由獨立開發者經營的 AI 工具品牌。我們的目標是幫助開發者和一般用戶找到最適合的 AI 工具，
           同時分享我們在打造 AI 產品過程中累積的技術經驗和實戰架構。
         </p>
         <p>
           我們相信好的工具應該從真實的痛點出發，而不是為了技術而技術。
-          每一款 Manatee 工具都是為了解決日常中具體的問題而打造。
         </p>
       </div>
 
-      <hr class="my-10 border-slate-200" />
+      <hr class="my-12 border-slate-200" />
 
-      <h2 class="text-xl font-bold text-slate-900">我們在做什麼</h2>
+      <h2 class="text-lg font-bold text-slate-900">我們在做什麼</h2>
 
-      <div class="mt-6 space-y-6">
-        <div class="rounded-xl border border-slate-200 bg-white p-6">
+      <div class="mt-8 space-y-8">
+        <div>
           <h3 class="font-semibold text-slate-900">自製 AI 工具</h3>
-          <p class="mt-2 text-sm text-slate-600">
-            從會議記錄整理、帳單辨識到求職追蹤，我們持續打造解決實際問題的 AI 工具。
+          <p class="mt-1 text-sm text-slate-500">
+            從會議記錄整理、帳單辨識到求職追蹤，持續打造解決實際問題的工具。
           </p>
         </div>
-        <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <div>
           <h3 class="font-semibold text-slate-900">開源工具推薦</h3>
-          <p class="mt-2 text-sm text-slate-600">
+          <p class="mt-1 text-sm text-slate-500">
             追蹤主流 AI 開源專案，按類別推薦最好用的工具 -- 語音模型、LLM、向量資料庫、部署方案等。
           </p>
         </div>
-        <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <div>
           <h3 class="font-semibold text-slate-900">技術文章與架構分享</h3>
-          <p class="mt-2 text-sm text-slate-600">
-            分享我們做東西的技術架構、工具組合和 Workflow，讓你少走冤枉路。
+          <p class="mt-1 text-sm text-slate-500">
+            分享做東西的技術架構、工具組合和 Workflow。
           </p>
         </div>
       </div>
 
-      <hr class="my-10 border-slate-200" />
+      <hr class="my-12 border-slate-200" />
 
-      <h2 class="text-xl font-bold text-slate-900">技術棧</h2>
+      <h2 class="text-lg font-bold text-slate-900">技術棧</h2>
 
-      <div class="mt-6 space-y-6">
+      <div class="mt-8 space-y-6">
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">AI / LLM</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400">AI / LLM</h3>
           <div class="mt-3 flex flex-wrap gap-2">
-            {['LLM (vLLM, Ollama)', 'Multi-Agent', 'RAG Pipeline', 'Embedding / Vector Search', 'Whisper STT', 'Speaker Diarization'].map(s => <TechTag label={s} />)}
+            {['LLM (vLLM, Ollama)', 'Multi-Agent', 'RAG Pipeline', 'Vector Search', 'Whisper STT', 'Speaker Diarization'].map(s => <TechTag label={s} />)}
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">全端開發</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400">全端開發</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {['Next.js', 'SvelteKit', 'React', 'Tailwind CSS', 'FastAPI', 'Hono', 'Node.js', 'PostgreSQL', 'pgvector', 'Prisma', 'Docker'].map(s => <TechTag label={s} />)}
           </div>
         </div>
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-400">整合</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400">整合</h3>
           <div class="mt-3 flex flex-wrap gap-2">
             {['Discord Bot', 'Telegram Bot', 'RESTful API', 'Microservice', 'GitHub Actions'].map(s => <TechTag label={s} />)}
           </div>
         </div>
       </div>
 
-      <hr class="my-10 border-slate-200" />
+      <hr class="my-12 border-slate-200" />
 
-      <h2 class="text-xl font-bold text-slate-900">聯絡方式</h2>
-      <p class="mt-3 text-sm text-slate-600">有任何問題、合作提案或工具建議，歡迎聯繫：</p>
+      <h2 class="text-lg font-bold text-slate-900">聯絡</h2>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><span class="text-slate-400">Email:</span> <a href="mailto:zhijiakyle@gmail.com" class="text-blue-600 hover:underline">zhijiakyle@gmail.com</a></li>
-        <li><span class="text-slate-400">GitHub:</span> <a href="https://github.com/ZJkyle" class="text-blue-600 hover:underline" target="_blank" rel="noopener">ZJkyle</a></li>
+        <li><span class="text-slate-400">Email</span> <a href="mailto:zhijiakyle@gmail.com" class="ml-2 text-slate-600 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-900 hover:decoration-slate-600">zhijiakyle@gmail.com</a></li>
+        <li><span class="text-slate-400">GitHub</span> <a href="https://github.com/ZJkyle" class="ml-2 text-slate-600 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-slate-900 hover:decoration-slate-600" target="_blank" rel="noopener">ZJkyle</a></li>
       </ul>
     </div>
   </section>

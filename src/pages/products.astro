@@ -7,11 +7,12 @@ import { products } from '../data/products';
 <BaseLayout title="工具 - Manatee">
   <section class="py-20">
     <div class="mx-auto max-w-5xl px-6">
-      <h1 class="text-3xl font-bold tracking-tight text-slate-900">AI 工具</h1>
-      <p class="mt-3 text-sm text-slate-600">
-        我們自己打造的 AI 工具，每一款都從真實痛點出發，涵蓋會議記錄、帳單辨識、求職追蹤等場景。
+      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600">Tools</p>
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">AI 工具</h1>
+      <p class="mt-3 max-w-2xl text-sm text-slate-500">
+        我們自己打造的 AI 工具，每一款都從真實痛點出發。
       </p>
-      <div class="mt-12 grid gap-8">
+      <div class="mt-14 grid gap-10">
         {products.map((p) => (
           <ProductCard {...p} />
         ))}
