@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
+  <!--
+    Minimalist manatee (sea cow) silhouette.
+    Faces right. Rounded body, paddle tail, small flippers, blunt snout.
+  -->
+  <path d="
+    M3.5 18
+    Q2 20.5 1.5 22.5
+    Q1 24 2.5 24.5
+    Q4 24.5 5 22
+    Q5.5 20.5 6 19
+    L6.5 18
+    Q6 16 6.5 13
+    Q7 9 11 7.5
+    Q13.5 6 17 6.5
+    Q20 7 22.5 8
+    Q25 9 27 10.5
+    Q29 12 29 14.5
+    Q29 17 27 18.5
+    Q25 20 22 20.5
+    Q18 21.5 15 22
+    Q11 22.5 8.5 21
+    Q6.5 19.5 6 18.5
+    Z
+  "/>
+  <!-- Flipper -->
+  <path d="M12 18 Q10 20.5 11.5 21.5 Q13 21 13.5 19 Z" fill="white" opacity="0.15"/>
+  <!-- Eye cutout -->
+  <circle cx="25" cy="13" r="1.2" fill="white"/>
+  <circle cx="25.2" cy="12.8" r="0.5"/>
+</svg>
