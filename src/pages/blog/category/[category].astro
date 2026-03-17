@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogPostCard from '../../../components/BlogPostCard.astro';
+import { getCollection } from 'astro:content';
+import { categories, type Category } from '../../../data/categories';
+
+export function getStaticPaths() {
+  return Object.keys(categories).map((key) => ({
+    params: { category: key },
+  }));
+}
+
+const { category } = Astro.params as { category: Category };
+const cat = categories[category];
+
+const posts = (await getCollection('blog'))
+  .filter((post) => (post.data.category ?? 'tech') === category)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const tabs = [
+  { key: 'all', label: '全部', href: '/blog/' },
+  ...Object.entries(categories).map(([key, { label }]) => ({
+    key,
+    label,
+    href: `/blog/category/${key}/`,
+  })),
+];
+---
+
+<BaseLayout title={`${cat.label} - Manatee`}>
+  <section class="py-20">
+    <div class="mx-auto max-w-3xl px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600">Blog</p>
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">文章</h1>
+      <p class="mt-3 text-sm text-slate-500">{cat.description}</p>
+
+      <nav class="mt-8 flex flex-wrap gap-2" aria-label="文章分類">
+        {tabs.map((tab) => (
+          <a
+            href={tab.href}
+            class:list={[
+              'rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
+              tab.key === category
+                ? 'bg-slate-900 text-white'
+                : 'bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700',
+            ]}
+          >
+            {tab.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="mt-14 space-y-8">
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <BlogPostCard
+              title={post.data.title}
+              date={post.data.date}
+              description={post.data.description}
+              slug={post.id}
+              tags={post.data.tags}
+              category={post.data.category}
+            />
+          ))
+        ) : (
+          <p class="text-sm text-slate-400">這個分類還沒有文章。</p>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

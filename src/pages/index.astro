@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
+import { categories } from '../data/categories';
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -69,14 +70,21 @@ const accentClasses: Record<string, { label: string; hoverBg: string; arrow: str
     <div class="mx-auto max-w-3xl px-6">
       <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">最新文章</h2>
       <ul class="mt-6 space-y-4">
-        {posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.id}/`} class="group flex items-baseline justify-between gap-4">
-              <span class="text-sm font-medium text-slate-900 transition-colors group-hover:text-teal-600">{post.data.title}</span>
-              <span class="shrink-0 text-xs text-slate-400">{post.data.date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' })}</span>
-            </a>
-          </li>
-        ))}
+        {posts.map((post) => {
+          const cat = post.data.category ? categories[post.data.category] : categories.tech;
+          const dotColor = { teal: 'bg-teal-500', amber: 'bg-amber-500', violet: 'bg-violet-500' };
+          return (
+            <li>
+              <a href={`/blog/${post.id}/`} class="group flex items-baseline justify-between gap-4">
+                <span class="flex items-center gap-2 text-sm font-medium text-slate-900 transition-colors group-hover:text-teal-600">
+                  <span class:list={['inline-block h-1.5 w-1.5 shrink-0 rounded-full', dotColor[cat.color]]} />
+                  {post.data.title}
+                </span>
+                <span class="shrink-0 text-xs text-slate-400">{post.data.date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' })}</span>
+              </a>
+            </li>
+          );
+        })}
       </ul>
       <a href="/blog/" class="mt-6 inline-block text-sm font-medium text-slate-400 transition-colors hover:text-slate-900">
         所有文章 &rarr;

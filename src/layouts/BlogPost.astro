@@ -1,14 +1,26 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { categories, type Category } from '../data/categories';
 
 interface Props {
   title: string;
   date: Date;
   tags?: string[];
+  category?: Category;
+  externalUrl?: string;
+  repoUrl?: string;
 }
 
-const { title, date, tags = [] } = Astro.props;
+const { title, date, tags = [], category, externalUrl, repoUrl } = Astro.props;
 const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const categoryColorClasses: Record<string, string> = {
+  teal: 'bg-teal-50 text-teal-700',
+  amber: 'bg-amber-50 text-amber-700',
+  violet: 'bg-violet-50 text-violet-700',
+};
+
+const cat = category ? categories[category] : null;
 ---
 
 <BaseLayout title={`${title} - Manatee`}>
@@ -17,8 +29,31 @@ const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month:
       <a href="/blog/" class="inline-block text-sm text-slate-400 transition-colors hover:text-slate-900">
         &larr; 返回文章列表
       </a>
-      <time class="mt-4 block text-sm text-slate-400">{formattedDate}</time>
+      <div class="mt-4 flex flex-wrap items-center gap-2">
+        {cat && (
+          <span class:list={['rounded-full px-2.5 py-0.5 text-xs font-semibold', categoryColorClasses[cat.color]]}>
+            {cat.label}
+          </span>
+        )}
+        <time class="text-sm text-slate-400">{formattedDate}</time>
+      </div>
       <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{title}</h1>
+      {(externalUrl || repoUrl) && (
+        <div class="mt-4 flex flex-wrap gap-3">
+          {externalUrl && (
+            <a href={externalUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-700">
+              查看專案
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+            </a>
+          )}
+          {repoUrl && (
+            <a href={repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50">
+              GitHub
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+            </a>
+          )}
+        </div>
+      )}
       {tags.length > 0 && (
         <div class="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (

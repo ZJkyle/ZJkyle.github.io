@@ -14,6 +14,13 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost title={post.data.title} date={post.data.date} tags={post.data.tags}>
+<BlogPost
+  title={post.data.title}
+  date={post.data.date}
+  tags={post.data.tags}
+  category={post.data.category}
+  externalUrl={post.data.externalUrl}
+  repoUrl={post.data.repoUrl}
+>
   <Content />
 </BlogPost>
