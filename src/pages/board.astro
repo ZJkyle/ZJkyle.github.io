@@ -42,38 +42,50 @@ const badgeLabel: Record<string, string> = {
     </div>
   </section>
 
-  <!-- Architecture Overview (compact layer diagram) -->
-  <section class="border-b border-slate-100 py-12">
-    <div class="mx-auto max-w-5xl px-6">
-      <div class="space-y-1">
-        {techLayers.map((layer) => (
-          <a
-            href={`#${layer.id}`}
-            class="group flex items-stretch overflow-hidden rounded-lg border border-slate-200 transition-all hover:border-slate-300 hover:shadow-sm"
-          >
-            <div class:list={['flex w-48 shrink-0 items-center gap-2 px-4 py-3 text-white sm:w-56', layer.color]}>
-              <span class="text-sm font-bold">{layer.name}</span>
-            </div>
-            <div class="flex min-w-0 flex-1 flex-wrap items-center gap-x-3 gap-y-1 px-4 py-3">
-              {layer.items.map((item) => (
-                <span class:list={[
-                  'whitespace-nowrap text-xs transition-colors',
-                  item.badge === 'using'
-                    ? 'font-semibold text-slate-700'
-                    : item.badge === 'recommended'
-                      ? 'font-medium text-slate-500'
-                      : 'text-slate-400',
-                ]}>
-                  {item.name}
-                </span>
-              ))}
-            </div>
-            <div class="flex items-center px-4 text-slate-300 transition-colors group-hover:text-slate-500">
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </a>
+  <!-- Architecture Diagram -->
+  <section class="border-b border-slate-100 bg-slate-50 py-12">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="relative">
+        {techLayers.map((layer, i) => (
+          <div>
+            {/* Connector line between layers */}
+            {i > 0 && (
+              <div class="flex justify-center py-1">
+                <div class="h-4 w-px bg-slate-300"></div>
+              </div>
+            )}
+
+            {/* Layer block */}
+            <a
+              href={`#${layer.id}`}
+              class="arch-layer group block rounded-xl border-2 border-transparent bg-white p-4 shadow-sm transition-all hover:border-slate-300 hover:shadow-md"
+            >
+              {/* Layer header */}
+              <div class="mb-3 flex items-center gap-2">
+                <div class:list={['h-2.5 w-2.5 rounded-full', layer.color]} />
+                <span class:list={['text-xs font-bold uppercase tracking-wider', layer.textColor]}>{layer.name}</span>
+                <span class="text-[10px] text-slate-300">{layer.subtitle}</span>
+              </div>
+
+              {/* Tool chips */}
+              <div class="flex flex-wrap gap-1.5">
+                {layer.items.map((item) => (
+                  <span class:list={[
+                    'inline-block rounded-md border px-2.5 py-1 text-xs font-medium transition-colors',
+                    item.badge === 'using'
+                      ? 'border-teal-200 bg-teal-50 text-teal-800'
+                      : item.badge === 'recommended'
+                        ? 'border-amber-200 bg-amber-50 text-amber-800'
+                        : item.badge === 'planning'
+                          ? 'border-slate-200 bg-slate-50 text-slate-500'
+                          : 'border-slate-200 bg-white text-slate-600',
+                  ]}>
+                    {item.name}
+                  </span>
+                ))}
+              </div>
+            </a>
+          </div>
         ))}
       </div>
     </div>
