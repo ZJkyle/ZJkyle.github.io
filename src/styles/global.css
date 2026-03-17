@@ -2,9 +2,68 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: 'Inter', 'Noto Sans TC', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'DM Sans', 'Noto Sans TC', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', 'Noto Serif TC', Georgia, serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+/* Hero animations */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-18px) translateX(6px); }
+  50% { transform: translateY(-8px) translateX(-4px); }
+  75% { transform: translateY(-22px) translateX(8px); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-14px) translateX(-8px); }
+  66% { transform: translateY(-24px) translateX(5px); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes wave-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.hero-stagger-1 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.hero-stagger-2 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+.hero-stagger-3 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both; }
+.hero-stagger-4 { animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both; }
+.hero-fade { animation: hero-fade-in 1.2s ease 0.6s both; }
+
+.float-slow { animation: float-slow 8s ease-in-out infinite; }
+.float-medium { animation: float-medium 6s ease-in-out infinite; }
+.float-fast { animation: float-fast 4s ease-in-out infinite; }
+.wave-drift { animation: wave-drift 20s linear infinite; }
+.shimmer { animation: shimmer 4s ease-in-out infinite; }

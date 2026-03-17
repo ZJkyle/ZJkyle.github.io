@@ -1,19 +1,58 @@
-<section class="border-b border-slate-200 py-24 sm:py-36">
-  <div class="mx-auto max-w-5xl px-6">
-    <p class="text-sm font-medium uppercase tracking-widest text-teal-600">AI Tools &middot; Open Source &middot; Workflows</p>
-    <h1 class="mt-4 max-w-3xl text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-      找到最適合你的<br />AI 工具
-    </h1>
-    <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-500">
-      Manatee 是一個 AI 工具集合站 -- 自己打造工具、推薦好用的開源專案、分享技術架構和實戰 Workflow。
-    </p>
-    <div class="mt-10 flex gap-4">
-      <a href="/products/" class="rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-slate-800">
-        探索工具
-      </a>
-      <a href="/board/" class="rounded-lg border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900">
-        工具推薦看板
-      </a>
+<section class="relative min-h-[92vh] overflow-hidden" style="background: linear-gradient(165deg, #0f3d3e 0%, #0d4f50 25%, #11706b 50%, #1a8a7d 75%, #2ec4b6 100%);">
+
+  <!-- Organic noise texture overlay -->
+  <div class="absolute inset-0 opacity-[0.04]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E'); background-size: 128px 128px;"></div>
+
+  <!-- Light caustic shapes -->
+  <div class="hero-fade absolute inset-0 overflow-hidden">
+    <!-- Large diffuse glow -->
+    <div class="float-slow absolute -top-32 right-[10%] h-[500px] w-[500px] rounded-full opacity-[0.07]" style="background: radial-gradient(circle, #5eead4 0%, transparent 70%);"></div>
+    <div class="float-medium absolute bottom-[15%] left-[5%] h-[400px] w-[400px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #99f6e4 0%, transparent 70%);"></div>
+
+    <!-- Floating particles / bubbles -->
+    <div class="float-slow absolute left-[12%] top-[20%] h-2 w-2 rounded-full bg-teal-300/20"></div>
+    <div class="float-medium absolute left-[25%] top-[60%] h-1.5 w-1.5 rounded-full bg-teal-200/15"></div>
+    <div class="float-fast absolute right-[20%] top-[35%] h-1 w-1 rounded-full bg-white/10"></div>
+    <div class="float-slow absolute right-[30%] top-[70%] h-2.5 w-2.5 rounded-full bg-teal-300/10"></div>
+    <div class="float-medium absolute left-[50%] top-[15%] h-1 w-1 rounded-full bg-white/15"></div>
+    <div class="float-fast absolute left-[40%] top-[80%] h-1.5 w-1.5 rounded-full bg-teal-200/10"></div>
+    <div class="float-slow absolute right-[15%] top-[55%] h-1 w-1 rounded-full bg-teal-300/20"></div>
+    <div class="float-medium absolute left-[70%] top-[40%] h-2 w-2 rounded-full bg-white/10"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex min-h-[92vh] items-center">
+    <div class="mx-auto w-full max-w-5xl px-6 py-24">
+      <p class="hero-stagger-1 text-sm font-medium tracking-[0.2em] text-teal-200/70">
+        TOOLS &middot; OPEN SOURCE &middot; WORKFLOWS
+      </p>
+
+      <h1 class="hero-stagger-2 mt-6 max-w-4xl text-5xl leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[5.5rem]">
+        <span class="font-bold">找到最適合你的</span><br />
+        <span class="font-serif italic text-teal-200">AI 工具</span>
+      </h1>
+
+      <p class="hero-stagger-3 mt-8 max-w-lg text-base leading-relaxed text-teal-100/60">
+        Manatee 是一個 AI 工具集合站 -- 自己打造工具、推薦好用的開源專案、分享技術架構和實戰 Workflow。
+      </p>
+
+      <div class="hero-stagger-4 mt-12 flex gap-4">
+        <a href="/products/" class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#0f3d3e] transition-all hover:bg-teal-50 hover:shadow-lg hover:shadow-white/10">
+          探索工具
+        </a>
+        <a href="/board/" class="rounded-lg border border-teal-300/30 px-6 py-3 text-sm font-medium text-teal-100 transition-all hover:border-teal-200/50 hover:text-white">
+          工具推薦看板
+        </a>
+      </div>
     </div>
+  </div>
+
+  <!-- Bottom wave transition -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg class="wave-drift w-[200%] sm:w-[200%]" viewBox="0 0 2400 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height: 60px;">
+      <path d="M0 40 C200 10, 400 65, 600 35 C800 5, 1000 55, 1200 40 C1400 25, 1600 60, 1800 30 C2000 0, 2200 50, 2400 40 L2400 80 L0 80 Z" fill="white" opacity="0.15"/>
+      <path d="M0 50 C150 25, 350 70, 600 45 C850 20, 1050 60, 1200 50 C1350 40, 1550 65, 1800 42 C2050 19, 2250 58, 2400 50 L2400 80 L0 80 Z" fill="white" opacity="0.3"/>
+      <path d="M0 60 C300 48, 500 72, 800 58 C1100 44, 1300 70, 1600 55 C1900 40, 2100 68, 2400 60 L2400 80 L0 80 Z" fill="white"/>
+    </svg>
   </div>
 </section>
