@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import BlogPostCard from '../components/BlogPostCard.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
@@ -43,19 +42,19 @@ const accentClasses: Record<string, { label: string; hoverBg: string; arrow: str
   <Hero />
 
   <!-- Entries -->
-  <section class="py-20">
-    <div class="mx-auto max-w-5xl px-6">
+  <section class="py-12">
+    <div class="mx-auto max-w-3xl px-6">
       <div class="grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 sm:grid-cols-3">
         {entries.map(({ href, label, title, description, accent }) => {
           const classes = accentClasses[accent];
           return (
-            <a href={href} class:list={['group flex flex-col justify-between bg-white p-8 transition-colors', classes.hoverBg]}>
+            <a href={href} class:list={['group flex flex-col justify-between bg-white p-6 transition-colors', classes.hoverBg]}>
               <div>
                 <p class:list={['text-xs font-semibold uppercase tracking-widest', classes.label]}>{label}</p>
-                <h3 class="mt-3 text-lg font-bold text-slate-900">{title}</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">{description}</p>
+                <h3 class="mt-2 text-base font-bold text-slate-900">{title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-slate-500">{description}</p>
               </div>
-              <span class:list={['mt-6 text-sm font-medium text-slate-400 transition-colors', classes.arrow]}>
+              <span class:list={['mt-4 text-sm font-medium text-slate-400 transition-colors', classes.arrow]}>
                 查看 &rarr;
               </span>
             </a>
@@ -66,26 +65,22 @@ const accentClasses: Record<string, { label: string; hoverBg: string; arrow: str
   </section>
 
   <!-- Latest posts -->
-  <section class="border-t border-slate-200 py-20">
+  <section class="border-t border-slate-100 py-12">
     <div class="mx-auto max-w-3xl px-6">
-      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600">最新文章</p>
-      <h2 class="mt-2 text-2xl font-bold text-slate-900">技術筆記</h2>
-      <div class="mt-10 space-y-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">最新文章</h2>
+      <ul class="mt-6 space-y-4">
         {posts.map((post) => (
-          <BlogPostCard
-            title={post.data.title}
-            date={post.data.date}
-            description={post.data.description}
-            slug={post.id}
-            tags={post.data.tags}
-          />
+          <li>
+            <a href={`/blog/${post.id}/`} class="group flex items-baseline justify-between gap-4">
+              <span class="text-sm font-medium text-slate-900 transition-colors group-hover:text-teal-600">{post.data.title}</span>
+              <span class="shrink-0 text-xs text-slate-400">{post.data.date.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' })}</span>
+            </a>
+          </li>
         ))}
-      </div>
-      <div class="mt-10">
-        <a href="/blog/" class="text-sm font-medium text-slate-500 transition-colors hover:text-slate-900">
-          查看所有文章 &rarr;
-        </a>
-      </div>
+      </ul>
+      <a href="/blog/" class="mt-6 inline-block text-sm font-medium text-slate-400 transition-colors hover:text-slate-900">
+        所有文章 &rarr;
+      </a>
     </div>
   </section>
 </BaseLayout>
