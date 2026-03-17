@@ -4,14 +4,20 @@ interface Props {
   date: Date;
   description: string;
   slug: string;
+  tags?: string[];
 }
 
-const { title, date, description, slug } = Astro.props;
+const { title, date, description, slug, tags } = Astro.props;
 const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <a href={`/blog/${slug}/`} class="group block border-b border-slate-100 pb-8">
-  <time class="text-xs text-slate-400">{formattedDate}</time>
+  <div class="flex flex-wrap items-center gap-2">
+    <time class="text-xs text-slate-400">{formattedDate}</time>
+    {tags && tags.map((tag) => (
+      <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500">{tag}</span>
+    ))}
+  </div>
   <h3 class="mt-1 text-lg font-bold text-slate-900 transition-colors group-hover:text-teal-600">{title}</h3>
   <p class="mt-2 text-sm leading-relaxed text-slate-500">{description}</p>
 </a>

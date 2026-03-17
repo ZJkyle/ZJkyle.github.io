@@ -4,6 +4,10 @@ export interface Product {
   problem: string;
   features: string[];
   stack: string[];
+  summary: string;
+  github?: string;
+  status: 'active' | 'beta' | 'planning';
+  access: string;
 }
 
 export const products: Product[] = [
@@ -21,6 +25,10 @@ export const products: Product[] = [
       'Google Calendar 整合',
     ],
     stack: ['Next.js 14', 'Hono', 'PostgreSQL', 'pgvector', 'vLLM (Qwen3)', 'Whisper', 'Discord.js', 'Tailwind CSS'],
+    summary: '把散落各處的筆記和會議記錄自動收集整理好',
+    github: 'https://github.com/ZJkyle/Glean',
+    status: 'beta',
+    access: '開源自架',
   },
   {
     name: 'Radar',
@@ -34,6 +42,10 @@ export const products: Product[] = [
       'PWA 支援，手機也能使用',
     ],
     stack: ['SvelteKit', 'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Tailwind CSS', 'DaisyUI', 'Docker'],
+    summary: '求職流程一站搞定，從投遞追蹤到面試經驗共享',
+    github: 'https://github.com/ZJkyle/Radar',
+    status: 'planning',
+    access: '開發中',
   },
   {
     name: 'AutoBill',
@@ -47,5 +59,9 @@ export const products: Product[] = [
       'RESTful API：標準化介面，輕鬆整合進既有系統',
     ],
     stack: ['FastAPI', 'OpenAI-compatible API', 'vLLM/Ollama', 'pgvector', 'asyncpg', 'structlog'],
+    summary: '拍張照片就能自動辨識帳單，擷取金額和明細',
+    github: 'https://github.com/ZJkyle/AutoBill',
+    status: 'active',
+    access: '開源自架',
   },
 ];
