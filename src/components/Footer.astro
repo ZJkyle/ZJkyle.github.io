@@ -3,13 +3,13 @@ const year = new Date().getFullYear();
 
 const navLinks = [
   { href: '/', label: '首頁' },
-  { href: '/products/', label: '作品集' },
-  { href: '/services/', label: '服務' },
-  { href: '/blog/', label: 'Blog' },
+  { href: '/products/', label: '工具' },
+  { href: '/board/', label: 'Board' },
+  { href: '/blog/', label: '技術文章' },
   { href: '/about/', label: '關於' },
 ];
 
-const serviceLinks = [
+const toolLinks = [
   { label: 'Glean - 資訊整理' },
   { label: 'AutoBill - 帳單辨識' },
   { label: 'Radar - 求職追蹤' },
@@ -21,10 +21,10 @@ const serviceLinks = [
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="sm:col-span-2 lg:col-span-1">
-        <p class="text-lg font-bold text-slate-900">Kyle Ko</p>
+        <p class="text-lg font-bold text-slate-900">Manatee</p>
         <p class="mt-2 text-sm leading-relaxed text-slate-500">
-          用 AI 自動化重複工作，<br />
-          讓你專注在真正重要的事。
+          AI 工具集合站 -- 分享好用的開源 AI 工具、<br />
+          技術文章與實戰架構。
         </p>
       </div>
 
@@ -40,11 +40,11 @@ const serviceLinks = [
         </ul>
       </div>
 
-      <!-- Services -->
+      <!-- Tools -->
       <div>
         <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">工具</h3>
         <ul class="mt-4 space-y-2.5">
-          {serviceLinks.map(({ label }) => (
+          {toolLinks.map(({ label }) => (
             <li>
               <a href="/products/" class="text-sm text-slate-600 transition-colors hover:text-blue-600">{label}</a>
             </li>
@@ -54,7 +54,7 @@ const serviceLinks = [
 
       <!-- Contact -->
       <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">聯絡我</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-400">聯絡</h3>
         <ul class="mt-4 space-y-2.5">
           <li>
             <a href="mailto:zhijiakyle@gmail.com" class="text-sm text-slate-600 transition-colors hover:text-blue-600">zhijiakyle@gmail.com</a>
@@ -62,15 +62,12 @@ const serviceLinks = [
           <li>
             <a href="https://github.com/ZJkyle" class="text-sm text-slate-600 transition-colors hover:text-blue-600" target="_blank" rel="noopener">GitHub</a>
           </li>
-          <li>
-            <a href="https://www.linkedin.com/in/%E6%99%BA%E5%98%89-%E6%9F%AF-256a212a0/" class="text-sm text-slate-600 transition-colors hover:text-blue-600" target="_blank" rel="noopener">LinkedIn</a>
-          </li>
         </ul>
       </div>
     </div>
 
     <div class="mt-12 border-t border-slate-200 pt-8 text-center">
-      <p class="text-xs text-slate-400">&copy; {year} Kyle Ko. All rights reserved.</p>
+      <p class="text-xs text-slate-400">&copy; {year} Manatee. All rights reserved.</p>
     </div>
   </div>
 </footer>

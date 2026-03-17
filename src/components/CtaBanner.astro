@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = '想知道 AI 能怎麼幫你？',
-  description = '看看我們的工具能不能解決你的問題，或是聊聊你遇到的痛點 -- 也許下一款工具就是為你做的。',
+  title = '想找到最適合的 AI 工具？',
+  description = '看看我們的工具推薦看板，或瀏覽技術文章了解背後的架構和 Workflow。',
 } = Astro.props;
 ---
 
@@ -17,11 +17,11 @@ const {
       {description}
     </p>
     <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <a href="/products/" class="w-full rounded-full bg-blue-600 px-8 py-3.5 text-sm font-medium text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 sm:w-auto">
-        探索所有工具
+      <a href="/board/" class="w-full rounded-full bg-blue-600 px-8 py-3.5 text-sm font-medium text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-500 sm:w-auto">
+        工具推薦看板
       </a>
-      <a href="mailto:zhijiakyle@gmail.com" class="w-full rounded-full border border-slate-600 px-8 py-3.5 text-sm font-medium text-slate-300 transition-colors hover:border-slate-500 hover:text-white sm:w-auto">
-        跟我聊聊
+      <a href="/blog/" class="w-full rounded-full border border-slate-600 px-8 py-3.5 text-sm font-medium text-slate-300 transition-colors hover:border-slate-500 hover:text-white sm:w-auto">
+        閱讀技術文章
       </a>
     </div>
   </div>

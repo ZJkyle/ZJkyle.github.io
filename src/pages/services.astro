@@ -1,53 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import { services } from '../data/services';
 ---
 
-<BaseLayout title="服務項目 - Kyle Ko">
-  <section class="py-20">
-    <div class="mx-auto max-w-5xl px-6">
-      <h1 class="text-3xl font-bold tracking-tight text-slate-900">服務項目</h1>
-      <p class="mt-3 text-sm text-slate-600">
-        我提供以 AI 技術為核心的開發與顧問服務，專注於幫助企業和團隊將 AI 落地到實際業務中。
-      </p>
-      <div class="mt-12 grid gap-8 sm:grid-cols-3">
-        {services.map((s) => (
-          <ServiceCard {...s} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-slate-50 py-20">
-    <div class="mx-auto max-w-3xl px-6">
-      <h2 class="text-2xl font-bold text-slate-900">合作方式</h2>
-      <ol class="mt-8 space-y-6">
-        <li class="flex gap-4">
-          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">1</span>
-          <div>
-            <p class="font-semibold text-slate-900">聊聊需求</p>
-            <p class="mt-1 text-sm text-slate-600">透過 Email 或視訊了解你的問題和目標</p>
-          </div>
-        </li>
-        <li class="flex gap-4">
-          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">2</span>
-          <div>
-            <p class="font-semibold text-slate-900">提案與報價</p>
-            <p class="mt-1 text-sm text-slate-600">我會提供解決方案和時程估算</p>
-          </div>
-        </li>
-        <li class="flex gap-4">
-          <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">3</span>
-          <div>
-            <p class="font-semibold text-slate-900">開發與交付</p>
-            <p class="mt-1 text-sm text-slate-600">按里程碑交付，過程保持密切溝通</p>
-          </div>
-        </li>
-      </ol>
-      <div class="mt-10 text-center">
-        <a href="mailto:zhijiakyle@gmail.com" class="inline-block rounded-full bg-blue-600 px-8 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700">
-          聯繫我
+<BaseLayout title="Manatee">
+  <section class="flex flex-1 items-center justify-center py-32">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold text-slate-900">此頁面已移除</h1>
+      <p class="mt-2 text-sm text-slate-600">請前往工具頁面或 Board 查看我們的內容。</p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <a href="/products/" class="inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700">
+          工具
+        </a>
+        <a href="/board/" class="inline-block rounded-full border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50">
+          Board
         </a>
       </div>
     </div>

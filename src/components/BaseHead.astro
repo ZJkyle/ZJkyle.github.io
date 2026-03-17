@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'AI 開發者 / 產品工程師 — 專注於 AI 應用開發與系統整合' } = Astro.props;
+const { title, description = 'Manatee -- AI 工具集合站，分享好用的開源 AI 工具、技術文章與實戰架構' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -20,7 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:site_name" content="Kyle Ko" />
+<meta property="og:site_name" content="Manatee" />
 <meta property="og:locale" content="zh_TW" />
 
 <!-- Twitter Card -->
