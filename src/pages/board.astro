@@ -2,144 +2,297 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { techLayers } from '../data/board';
 
-const badgeClass: Record<string, string> = {
-  using: 'bg-teal-50 text-teal-700',
-  recommended: 'bg-amber-50 text-amber-700',
-  planning: 'bg-slate-100 text-slate-500',
-};
-
 const badgeLabel: Record<string, string> = {
   using: 'Using',
   recommended: 'Recommended',
   planning: 'Planning',
 };
 
+/* Each layer gets a tinted glass accent */
+const layerAccent: Record<string, { bg: string; ring: string; dot: string; chipActive: string; badgeBg: string }> = {
+  products:    { bg: 'bg-teal-500/[0.06]',   ring: 'ring-teal-400/20',   dot: 'bg-teal-500',   chipActive: 'bg-teal-500/10 ring-teal-500/30',   badgeBg: 'bg-teal-500/10 text-teal-700' },
+  'ai-agent':  { bg: 'bg-violet-500/[0.06]', ring: 'ring-violet-400/20', dot: 'bg-violet-500', chipActive: 'bg-violet-500/10 ring-violet-500/30', badgeBg: 'bg-violet-500/10 text-violet-700' },
+  'ai-models': { bg: 'bg-amber-500/[0.06]',  ring: 'ring-amber-400/20',  dot: 'bg-amber-500',  chipActive: 'bg-amber-500/10 ring-amber-500/30',  badgeBg: 'bg-amber-500/10 text-amber-700' },
+  data:        { bg: 'bg-blue-500/[0.06]',   ring: 'ring-blue-400/20',   dot: 'bg-blue-500',   chipActive: 'bg-blue-500/10 ring-blue-500/30',   badgeBg: 'bg-blue-500/10 text-blue-700' },
+  web:         { bg: 'bg-emerald-500/[0.06]',ring: 'ring-emerald-400/20',dot: 'bg-emerald-500',chipActive: 'bg-emerald-500/10 ring-emerald-500/30',badgeBg: 'bg-emerald-500/10 text-emerald-700' },
+  infra:       { bg: 'bg-slate-500/[0.06]',  ring: 'ring-slate-400/20',  dot: 'bg-slate-500',  chipActive: 'bg-slate-500/10 ring-slate-500/30',  badgeBg: 'bg-slate-500/10 text-slate-600' },
+};
+
 let toolIndex = 0;
 ---
 
 <BaseLayout title="Tech Stack - Manatee" description="Kyle 的技術架構全覽 -- 從產品到基礎設施，每一層用了什麼工具、為什麼選它">
-  <!-- Header -->
-  <section class="border-b border-slate-100 py-16">
-    <div class="mx-auto max-w-5xl px-6">
-      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600">Tech Stack</p>
-      <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900">技術架構全覽</h1>
-      <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
-        我的專案從產品層到基礎設施層，每一層分別用了哪些開源工具和框架。
-        點擊任一工具展開細節。
-      </p>
-      <div class="mt-4 flex flex-wrap gap-3 text-xs">
-        <span class="inline-flex items-center gap-1.5">
-          <span class="inline-block rounded bg-teal-50 px-1.5 py-0.5 font-medium text-teal-700">Using</span>
-          <span class="text-slate-400">正在使用</span>
-        </span>
-        <span class="inline-flex items-center gap-1.5">
-          <span class="inline-block rounded bg-amber-50 px-1.5 py-0.5 font-medium text-amber-700">Recommended</span>
-          <span class="text-slate-400">推薦</span>
-        </span>
-        <span class="inline-flex items-center gap-1.5">
-          <span class="inline-block rounded bg-slate-100 px-1.5 py-0.5 font-medium text-slate-500">Planning</span>
-          <span class="text-slate-400">規劃中</span>
-        </span>
-      </div>
+  <div class="board-page relative min-h-screen overflow-hidden">
+    <!-- Ambient background blobs -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-32 -left-32 h-[500px] w-[500px] rounded-full bg-teal-200/30 blur-[120px]"></div>
+      <div class="absolute top-1/4 right-0 h-[400px] w-[400px] rounded-full bg-violet-200/25 blur-[100px]"></div>
+      <div class="absolute bottom-1/4 left-1/4 h-[350px] w-[350px] rounded-full bg-amber-200/20 blur-[100px]"></div>
+      <div class="absolute -bottom-20 right-1/3 h-[400px] w-[400px] rounded-full bg-blue-200/20 blur-[110px]"></div>
     </div>
-  </section>
 
-  <!-- Architecture Diagram with Inline Expandable Chips -->
-  <section class="bg-slate-50 py-12">
-    <div class="mx-auto max-w-4xl px-6">
-      <div class="relative">
-        {techLayers.map((layer, i) => (
-          <div>
-            {/* Connector line between layers */}
-            {i > 0 && (
-              <div class="flex justify-center py-1">
-                <div class="h-6 w-px bg-slate-300"></div>
-              </div>
-            )}
+    <!-- Header -->
+    <section class="relative py-16 pb-10">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="glass-stagger-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Tech Stack</p>
+        <h1 class="glass-stagger-2 mt-2 text-3xl font-extrabold tracking-tight text-slate-800 sm:text-4xl">技術架構全覽</h1>
+        <p class="glass-stagger-3 mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+          從產品層到基礎設施層，每一層分別用了哪些開源工具和框架。點擊任一工具展開細節。
+        </p>
+        <div class="glass-stagger-4 mt-5 flex flex-wrap gap-2.5 text-xs">
+          <span class="glass-badge inline-flex items-center gap-1.5 rounded-full px-3 py-1">
+            <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+            <span class="font-medium text-slate-600">Using</span>
+          </span>
+          <span class="glass-badge inline-flex items-center gap-1.5 rounded-full px-3 py-1">
+            <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+            <span class="font-medium text-slate-600">Recommended</span>
+          </span>
+          <span class="glass-badge inline-flex items-center gap-1.5 rounded-full px-3 py-1">
+            <span class="h-2 w-2 rounded-full bg-slate-400"></span>
+            <span class="font-medium text-slate-600">Planning</span>
+          </span>
+        </div>
+      </div>
+    </section>
 
-            {/* Layer card */}
-            <div class="rounded-xl bg-white p-5 shadow-sm">
-              {/* Layer header */}
-              <div class="mb-4 flex items-center gap-2">
-                <div class:list={['h-3 w-3 rounded-full', layer.color]} />
-                <span class:list={['text-sm font-bold uppercase tracking-wider', layer.textColor]}>{layer.name}</span>
-                <span class="text-xs text-slate-400">{layer.subtitle}</span>
-              </div>
+    <!-- Architecture layers -->
+    <section class="relative pb-20 pt-4">
+      <div class="mx-auto max-w-4xl px-6">
+        <div class="relative space-y-4">
+          {techLayers.map((layer, i) => {
+            const accent = layerAccent[layer.id] || layerAccent.infra;
+            return (
+              <div class={`glass-layer glass-layer-${i}`}>
+                {/* Glass card */}
+                <div class:list={[
+                  'glass-card relative rounded-3xl p-6 transition-shadow duration-300',
+                  'hover:shadow-xl hover:shadow-slate-200/50',
+                ]}>
+                  {/* Accent dot + layer header */}
+                  <div class="mb-4 flex items-center gap-3">
+                    <div class:list={['h-2.5 w-2.5 rounded-full shadow-sm', accent.dot]}
+                         style={`box-shadow: 0 0 6px 1px color-mix(in srgb, currentColor 30%, transparent);`}></div>
+                    <span class="text-[13px] font-bold uppercase tracking-wider text-slate-700">{layer.name}</span>
+                    <span class="text-xs text-slate-400">{layer.subtitle}</span>
+                  </div>
 
-              {/* Tool chips */}
-              <div class="flex flex-wrap gap-2">
-                {layer.items.map((item) => {
-                  const id = `tool-${toolIndex++}`;
-                  return (
-                    <div class="tool-wrapper">
-                      <button
-                        type="button"
-                        data-tool-id={id}
-                        class:list={[
-                          'tool-chip inline-flex items-center gap-1 rounded-md border px-3 py-1.5 text-xs font-medium transition-all cursor-pointer',
-                          'hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-1',
-                          item.badge === 'using'
-                            ? 'border-teal-300 bg-teal-50 text-teal-800 hover:bg-teal-100 focus:ring-teal-300'
-                            : item.badge === 'recommended'
-                              ? 'border-amber-300 bg-amber-50 text-amber-800 hover:bg-amber-100 focus:ring-amber-300'
-                              : item.badge === 'planning'
-                                ? 'border-slate-300 bg-slate-50 text-slate-600 hover:bg-slate-100 focus:ring-slate-300'
-                                : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 focus:ring-slate-300',
-                        ]}
-                      >
-                        {item.name}
-                        <svg class="tool-chevron h-3 w-3 text-current opacity-40 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-
-                      {/* Inline detail panel (hidden by default) */}
-                      <div id={id} class="tool-detail hidden mt-2 mb-1 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
-                        <div class="flex items-start justify-between gap-3">
-                          <h4 class="font-semibold text-slate-900">{item.name}</h4>
-                          {item.badge && (
-                            <span class:list={['shrink-0 rounded px-2 py-0.5 text-xs font-medium', badgeClass[item.badge]]}>
-                              {badgeLabel[item.badge]}
-                            </span>
-                          )}
-                        </div>
-                        <p class="mt-2 leading-relaxed text-slate-600">{item.description}</p>
-                        {item.note && (
-                          <p class="mt-2 text-xs text-slate-400 italic">{item.note}</p>
-                        )}
-                        {item.usedIn && item.usedIn.length > 0 && (
-                          <div class="mt-3 flex flex-wrap gap-1">
-                            {item.usedIn.map((project) => (
-                              <span class="rounded bg-white px-2 py-0.5 text-[10px] font-medium text-slate-500 border border-slate-200">
-                                {project}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        <div class="mt-3 pt-2 border-t border-slate-200">
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener"
-                            class="inline-flex items-center gap-1 text-xs font-medium text-teal-600 hover:text-teal-800 transition-colors"
+                  {/* Tool chips */}
+                  <div class="flex flex-wrap gap-2">
+                    {layer.items.map((item) => {
+                      const id = `tool-${toolIndex++}`;
+                      return (
+                        <div class="tool-wrapper">
+                          <button
+                            type="button"
+                            data-tool-id={id}
+                            data-layer={layer.id}
+                            class:list={[
+                              'tool-chip glass-chip inline-flex items-center gap-1.5 rounded-2xl px-3.5 py-1.5 text-xs font-medium transition-all duration-200 cursor-pointer',
+                              'focus:outline-none',
+                            ]}
                           >
-                            Open
-                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            {item.badge && (
+                              <span class:list={[
+                                'h-[6px] w-[6px] rounded-full shrink-0',
+                                item.badge === 'using' ? 'bg-teal-500' :
+                                item.badge === 'recommended' ? 'bg-amber-500' :
+                                'bg-slate-400',
+                              ]}></span>
+                            )}
+                            <span class="text-slate-700">{item.name}</span>
+                            <svg class="tool-chevron h-3 w-3 text-slate-400 opacity-50 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                             </svg>
-                          </a>
+                          </button>
+
+                          {/* Detail panel */}
+                          <div id={id} class="tool-detail hidden mt-2 mb-1">
+                            <div class="glass-detail rounded-2xl p-5 text-sm">
+                              <div class="flex items-start justify-between gap-3">
+                                <h4 class="font-semibold text-slate-800">{item.name}</h4>
+                                {item.badge && (
+                                  <span class:list={[
+                                    'shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-semibold',
+                                    item.badge === 'using' ? accent.badgeBg :
+                                    item.badge === 'recommended' ? 'bg-amber-500/10 text-amber-700' :
+                                    'bg-slate-500/10 text-slate-500',
+                                  ]}>
+                                    {badgeLabel[item.badge]}
+                                  </span>
+                                )}
+                              </div>
+                              <p class="mt-2.5 leading-relaxed text-slate-500">{item.description}</p>
+                              {item.note && (
+                                <p class="mt-2 text-xs text-slate-400 italic">{item.note}</p>
+                              )}
+                              {item.usedIn && item.usedIn.length > 0 && (
+                                <div class="mt-3 flex flex-wrap gap-1.5">
+                                  {item.usedIn.map((project) => (
+                                    <span class="glass-tag rounded-lg px-2 py-0.5 text-[10px] font-medium text-slate-500">
+                                      {project}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              <div class="mt-3 pt-2.5 border-t border-white/40">
+                                <a
+                                  href={item.url}
+                                  target="_blank"
+                                  rel="noopener"
+                                  class="inline-flex items-center gap-1 text-xs font-medium text-teal-600 hover:text-teal-700 transition-colors"
+                                >
+                                  Open
+                                  <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+  <style>
+    /* ---- Liquid Glass core ---- */
+    .glass-card {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.72) 0%,
+        rgba(255,255,255,0.45) 50%,
+        rgba(255,255,255,0.60) 100%
+      );
+      backdrop-filter: blur(40px) saturate(1.6);
+      -webkit-backdrop-filter: blur(40px) saturate(1.6);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.7) inset,
+        0 8px 32px -8px rgba(0,0,0,0.08),
+        0 2px 8px -2px rgba(0,0,0,0.04);
+    }
+
+    .glass-chip {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.65) 0%,
+        rgba(255,255,255,0.35) 100%
+      );
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.50);
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.6) inset,
+        0 2px 8px -2px rgba(0,0,0,0.06);
+    }
+    .glass-chip:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.80) 0%,
+        rgba(255,255,255,0.50) 100%
+      );
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.8) inset,
+        0 4px 16px -4px rgba(0,0,0,0.10);
+    }
+    .glass-chip:active,
+    .glass-chip[data-open="true"] {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.85) 0%,
+        rgba(255,255,255,0.55) 100%
+      );
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.9) inset,
+        0 4px 16px -2px rgba(0,0,0,0.10);
+    }
+
+    .glass-detail {
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,0.75) 0%,
+        rgba(255,255,255,0.50) 100%
+      );
+      backdrop-filter: blur(30px) saturate(1.5);
+      -webkit-backdrop-filter: blur(30px) saturate(1.5);
+      border: 1px solid rgba(255,255,255,0.50);
+      box-shadow:
+        0 1px 0 0 rgba(255,255,255,0.6) inset,
+        0 8px 24px -6px rgba(0,0,0,0.08);
+    }
+
+    .glass-badge {
+      background: rgba(255,255,255,0.50);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.45);
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.5) inset;
+    }
+
+    .glass-tag {
+      background: rgba(255,255,255,0.50);
+      border: 1px solid rgba(255,255,255,0.40);
+    }
+
+    /* ---- Entrance animations ---- */
+    @keyframes glass-rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    .glass-stagger-1 { animation: glass-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+    .glass-stagger-2 { animation: glass-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both; }
+    .glass-stagger-3 { animation: glass-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both; }
+    .glass-stagger-4 { animation: glass-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both; }
+
+    .glass-layer {
+      animation: glass-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .glass-layer-0 { animation-delay: 0.20s; }
+    .glass-layer-1 { animation-delay: 0.30s; }
+    .glass-layer-2 { animation-delay: 0.40s; }
+    .glass-layer-3 { animation-delay: 0.50s; }
+    .glass-layer-4 { animation-delay: 0.60s; }
+    .glass-layer-5 { animation-delay: 0.70s; }
+
+    /* Detail open animation */
+    .tool-detail:not(.hidden) {
+      animation: detail-float 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes detail-float {
+      from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Background page tone */
+    .board-page {
+      background:
+        linear-gradient(175deg, #f8fafb 0%, #f1f4f9 35%, #f5f3f0 65%, #f4f7fa 100%);
+    }
+  </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -153,30 +306,29 @@ let toolIndex = 0;
           const targetPanel = document.getElementById(targetId);
           if (!targetPanel) return;
 
-          // If clicking the already-open chip, close it
           if (openId === targetId) {
             targetPanel.classList.add('hidden');
             (btn as HTMLElement).querySelector('.tool-chevron')?.classList.remove('rotate-180');
+            (btn as HTMLElement).removeAttribute('data-open');
             openId = null;
             return;
           }
 
-          // Close the previously open panel
           if (openId) {
             const prevPanel = document.getElementById(openId);
             if (prevPanel) {
               prevPanel.classList.add('hidden');
             }
-            // Reset the previous chip's chevron
             const prevBtn = document.querySelector(`[data-tool-id="${openId}"]`);
             if (prevBtn) {
               prevBtn.querySelector('.tool-chevron')?.classList.remove('rotate-180');
+              (prevBtn as HTMLElement).removeAttribute('data-open');
             }
           }
 
-          // Open the new panel
           targetPanel.classList.remove('hidden');
           (btn as HTMLElement).querySelector('.tool-chevron')?.classList.add('rotate-180');
+          (btn as HTMLElement).setAttribute('data-open', 'true');
           openId = targetId;
         });
       });
