@@ -1,12 +1,12 @@
 # CLAUDE CODE 配置說明
 
-> 目的：協助 Claude 高效理解與維護 Kyle 的個人 Portfolio 網站。
+> 目的：協助 Claude 高效理解與維護 Kyle 的個人網站 Manatee（AI 工具集合站）。
 
 ---
 
 ## 專案概述
-- 使用 **Astro 5.x + Tailwind CSS v4** 建立的專業開發者 Portfolio
-- 部署方式：GitHub Pages via GitHub Actions
+- 使用 **Astro 5.x + Tailwind CSS v4** 建立，品牌名稱 Manatee
+- 部署方式：push 到 `main` 後由 GitHub Actions 建置並部署到 GitHub Pages
 - 網址：https://ZJkyle.github.io
 
 ## 常用指令
@@ -16,27 +16,39 @@
 
 ## 目錄結構
 ```
+public/
+├── og-default.png     # 全站預設分享縮圖（1200x630）
+└── og/                # 個別文章的分享縮圖
 src/
-├── components/    # Astro 元件（Header, Footer, Hero, Cards...）
-├── content/blog/  # Blog 文章（Markdown, Content Collection）
-├── data/          # 結構化資料（products.ts, services.ts）
-├── layouts/       # 頁面版型（BaseLayout, BlogPost）
-├── pages/         # 路由頁面（index, products, services, about, blog/）
-└── styles/        # 全域樣式（global.css with Tailwind）
+├── components/        # BaseHead, Header, Footer, Hero, ProductCard, BlogPostCard, TechTag
+├── content/blog/      # Blog 文章（Markdown, Content Collection）
+├── content/templates/ # 三種分類的文章範本（tech / discovery / reflection）
+├── data/              # products.ts（工具）、board.ts（技術棧）、categories.ts（文章分類）
+├── layouts/           # BaseLayout, BlogPost
+├── pages/             # index, products, board, blog/, about, 404
+└── styles/            # global.css（Tailwind 與 hero 動畫）
 ```
+
+## 新增文章
+1. 從 `src/content/templates/` 複製對應分類的範本到 `src/content/blog/<slug>.md`
+2. frontmatter 欄位定義在 `src/content.config.ts`：
+   - 必填：`title`、`date`、`description`
+   - 選填：`tags`、`category`（tech / discovery / reflection，預設 tech）、`externalUrl`、`repoUrl`、`image`
+3. `image` 是分享縮圖路徑，例如 `/og/<slug>.png`（1200x630）；沒填就用 `/og-default.png`
+4. `description` 會成為頁面 meta description 與 Threads/社群分享的摘要
+
+## 路由備註
+- `/services/` 已移除，在 `astro.config.mjs` 用 redirect 導到 `/products/`
 
 ## 當前進度
 
 ### 已完成
 - [x] Hexo 轉 Astro 5.x + Tailwind CSS v4
-- [x] 建立首頁、作品集、服務、關於我、Blog 頁面
-- [x] 遷移 2 篇 Blog 文章（Content Collection）
-- [x] 設定 GitHub Actions 自動部署
-
-### 待完成
-- [ ] 加入更多 Blog 文章
-- [ ] 加入 RWD 行動版 hamburger menu
-- [ ] SEO 優化（Open Graph, sitemap）
+- [x] 首頁、工具、技術棧、文章、關於我頁面
+- [x] Blog 分類系統與範本
+- [x] 行動版 hamburger menu
+- [x] SEO：sitemap、Open Graph 與分享縮圖
+- [x] GitHub Actions 自動部署
 
 ### 待研究：EdgeSwarm Inference System
 - [ ] 研究 vLLM / Ollama 透過 model preloading 消除 cold-start latency 的機制

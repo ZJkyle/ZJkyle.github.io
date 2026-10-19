@@ -1,69 +1,48 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this directory.
 
-## 專案概述（Project Overview）
-
-**專案名稱：src**
-
-<!-- 請補充專案描述 -->
-
----
-
-## 技術架構（Tech Stack）
-
----
+專案整體說明、指令與新增文章流程見根目錄的 `claude.md`。
 
 ## 目錄結構（Directory Structure）
 
 ```
 .
 ├── components
-│   ├── BaseHead.astro
-│   ├── BlogPostCard.astro
-│   ├── Footer.astro
-│   ├── Header.astro
-│   ├── Hero.astro
-│   ├── HighlightCard.astro
-│   ├── ProductCard.astro
-│   ├── ServiceCard.astro
-│   └── TechTag.astro
+│   ├── BaseHead.astro       # meta、Open Graph、分享縮圖（image prop，預設 /og-default.png）
+│   ├── BlogPostCard.astro
+│   ├── Footer.astro
+│   ├── Header.astro         # 含行動版選單
+│   ├── Hero.astro
+│   ├── ProductCard.astro
+│   └── TechTag.astro
 ├── content
-│   └── blog
+│   ├── blog                 # 文章
+│   └── templates            # 文章範本
 ├── data
-│   ├── products.ts
-│   └── services.ts
+│   ├── board.ts             # 技術棧頁資料
+│   ├── categories.ts        # 文章分類
+│   └── products.ts          # 工具頁資料
 ├── layouts
-│   ├── BaseLayout.astro
-│   └── BlogPost.astro
+│   ├── BaseLayout.astro
+│   └── BlogPost.astro       # 會把 description、image 傳給 BaseHead
 ├── pages
-│   ├── blog
-│   ├── 404.astro
-│   ├── about.astro
-│   ├── index.astro
-│   ├── products.astro
-│   └── services.astro
+│   ├── blog
+│   ├── 404.astro
+│   ├── about.astro
+│   ├── board.astro
+│   ├── index.astro
+│   └── products.astro
 ├── styles
-│   └── global.css
-└── content.config.ts
-
-9 directories, 20 files
+│   └── global.css
+└── content.config.ts        # blog frontmatter schema
 ```
 
----
-
-## 標準開發流程（Standard Development Workflow）
-
-1. 先閱讀 `CLAUDE.md` 和 `README.md`
-2. 根據任務需求探索相關程式碼
-3. 大範圍修改前先說明計劃
-4. 執行測試驗證修改
-5. 撰寫 commit message 並提交
-
-**注意事項：**
+## 注意事項
 - 不要使用 emoji
 - 建立新檔案前先詢問使用者
+- 大範圍修改前先說明計劃
 
 ---
 
-最後更新：2026-03-16
+最後更新：2026-10-19

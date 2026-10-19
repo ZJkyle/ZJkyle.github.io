@@ -4,6 +4,8 @@ import { categories, type Category } from '../data/categories';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
   date: Date;
   tags?: string[];
   category?: Category;
@@ -11,7 +13,7 @@ interface Props {
   repoUrl?: string;
 }
 
-const { title, date, tags = [], category, externalUrl, repoUrl } = Astro.props;
+const { title, description, image, date, tags = [], category, externalUrl, repoUrl } = Astro.props;
 const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 
 const categoryColorClasses: Record<string, string> = {
@@ -23,7 +25,7 @@ const categoryColorClasses: Record<string, string> = {
 const cat = category ? categories[category] : null;
 ---
 
-<BaseLayout title={`${title} - Manatee`}>
+<BaseLayout title={`${title} - Manatee`} description={description} image={image} type="article">
   <article class="mx-auto max-w-3xl px-6 py-16">
     <header class="mb-10">
       <a href="/blog/" class="inline-block text-sm text-slate-400 transition-colors hover:text-slate-900">

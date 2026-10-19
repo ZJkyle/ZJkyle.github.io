@@ -11,6 +11,7 @@ const blog = defineCollection({
     category: z.enum(['tech', 'discovery', 'reflection']).default('tech'),
     externalUrl: z.string().url().optional(),
     repoUrl: z.string().url().optional(),
+    image: z.string().optional(),
   }),
 });
 

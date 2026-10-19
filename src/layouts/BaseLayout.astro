@@ -7,15 +7,17 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, type } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-TW">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={image} type={type} />
   </head>
   <body class="flex min-h-screen flex-col bg-white font-sans text-slate-900 antialiased">
     <Header />

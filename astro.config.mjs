@@ -5,6 +5,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ZJkyle.github.io',
   integrations: [sitemap()],
+  redirects: {
+    '/services': '/products/',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
